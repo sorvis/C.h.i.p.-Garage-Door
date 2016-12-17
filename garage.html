@@ -1,18 +1,22 @@
 <html>
     <head>
-        <script>
+        <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type = "text/javascript">
             function toogle () {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'get');
-                form.setAttribute('action', 'http://$server_ip:8080/garage/toggle');
-                form.style.display = 'hidden';
-                document.body.appendChild(form)
-                form.submit();
+                $$.ajax({
+                    url: 'http://$server_ip:8080/garage/toggle',
+                    cache: false,
+                    method: "GET",
+                }).done(function(html){
+                    ( "#output" ).append( html );
+                });
             }
         </script>
     </head>
     <body>
         <h1>Garage Status: Unknown</h1>
         <button type="button" onclick="toogle();">Toggle</button>
+        <div id= "output"></div>
     </body>
 </html>
+
