@@ -14,7 +14,8 @@ urls = (
 app = web.application(urls, globals())
 
 class garage_status:
-    return "<html><body><h1>Garage Status: Unknown</h1></body></html>";
+    def GET(self):
+        return "<html><body><h1>Garage Status: Unknown</h1></body></html>";
 
 class list_users:        
     def GET(self):
