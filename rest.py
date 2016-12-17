@@ -12,7 +12,7 @@ def get_ip_address():
 
 urls = (
     '/garage', 'garage_status',
-    '/garage/toggle', 'garage_toggle'
+    '/garage/toggle(.*)', 'garage_toggle'
 )
 
 app = web.application(urls, globals())
@@ -27,7 +27,7 @@ class garage_status:
             return html
 
 class garage_toggle:
-    def GET(self):
+    def GET(self, arguments):
         try:
             GPIO.cleanup()
             GPIO.setup("XIO-P0", GPIO.OUT)
@@ -39,7 +39,7 @@ class garage_toggle:
             GPIO.cleanup()
             return "<html><body>Door was toggled!</body></html>"
         except:
-            return "Error calling GPIO pin"
+            return "<html><bod>Error calling GPIO pin</bod></html>"
 
 
 if __name__ == "__main__":
