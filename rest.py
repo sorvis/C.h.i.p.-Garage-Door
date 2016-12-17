@@ -7,10 +7,14 @@ root = tree.getroot()
 
 urls = (
     '/users', 'list_users',
-    '/users/(.*)', 'get_user'
+    '/users/(.*)', 'get_user',
+    '/garage', 'garage_status',
 )
 
 app = web.application(urls, globals())
+
+class garage_status:
+    return "<html><body><h1>Garage Status: Unknown</h1></body></html>";
 
 class list_users:        
     def GET(self):
