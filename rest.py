@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 import web
-import xml.etree.ElementTree as ET
 import CHIP_IO.GPIO as GPIO
 import time
-
-tree = ET.parse('user_data.xml')
-root = tree.getroot()
 
 urls = (
     '/garage', 'garage_status',
